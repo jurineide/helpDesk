@@ -1,7 +1,5 @@
 package com.unisa.helpDesk.dtos;
-
 import com.unisa.helpDesk.enumerator.TipoStatus;
-import com.soulcode.hercall.models.*;
 import com.unisa.helpDesk.models.Chamado;
 import com.unisa.helpDesk.models.Prioridade;
 import com.unisa.helpDesk.models.Setor;
