@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cadastro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cadastro.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <img src="/img/log.jpg" alt="Logo" class="logo3">
+        <div class="form-container">
+            <div>
+                <h1>Cadastro do usuário</h1>
+            </div>
+            <form action="/cadastra-usuario" method="post">
+                <div>
+                    <div>
+                        <label for="nome"></label>
+                        <input type="text" class="form-control form-control-user" id="nome" name="nome"
+                               placeholder="Nome" required>
+                    </div>
+                    <div>
+                        <label for="matricula"></label>
+                        <input type="text" class="form-control form-control-user" id="matricula" name="matricula"
+                               placeholder="Matrícula" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email"></label>
+                    <input type="email" class="form-control form-control-user" id="email" name="email"
+                           placeholder="Email" required>
+                </div>
+                <div>
+                    <div>
+                        <input type="password" name="senha" class="form-control form-control-user"
+                               id="senha" placeholder="Senha" required>
+                    </div>
+                    <div>
+                        <input type="password" class="form-control form-control-user" name="confirmaSenha"
+                               id="confirmaSenha" placeholder="Confirme a senha">
+                    </div>
+                </div>
+                <div>
+                    <label>Tipo de usuário:</label>
+                    <label for="tecnico"> Técnico </label>
+                    <input type="radio" name="tipoUsuario" value="TECNICO" id="tecnico">
+                    <label for="usuario"> Usuário </label>
+                    <input type="radio" name="tipoUsuario" value="FUNCIONARIO" id="usuario">
+                </div>
+                <div id="error-message" class="text-danger">
+                    <p th:if="${erro != null}" th:text="${erro}"></p>
+                </div>
+                <button type="submit" id="submit_button">Cadastrar</button>
+            </form>
+
+            <div class="text-center">
+                <a href="/login">Já possui um cadastro? Realizar login!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

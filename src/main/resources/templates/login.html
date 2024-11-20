@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+
+</head>
+<body class="body2">
+<div class="container">
+    <div class="content">
+        <img src="/img/log.jpg" alt="Logo" class="logo2">
+        <form action="/login-usuario" method="post">
+            <div class="header">
+                <h1>Bem-vindx!</h1>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control form-control-user" name="email"
+                       id="exampleInputEmail" aria-describedby="emailHelp"
+                       placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control form-control-user" name="senha"
+                       id="exampleInputPassword" placeholder="Senha">
+            </div>
+            <div id="error-message">
+                <p th:if="${erro != null}" th:text="${erro}"></p>
+            </div>
+            <button type="submit" id="submit_button">Entrar</button>
+        </form>
+        <br/>
+        <div class="footer">
+            <a href="/cadastro">Clique aqui para criar uma conta</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

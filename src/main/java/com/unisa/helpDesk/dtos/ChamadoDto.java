@@ -1,0 +1,94 @@
+package com.unisa.helpDesk.dtos;
+import com.unisa.helpDesk.enumerator.TipoStatus;
+import com.unisa.helpDesk.models.Chamado;
+import com.unisa.helpDesk.models.Prioridade;
+import com.unisa.helpDesk.models.Setor;
+import com.unisa.helpDesk.models.Usuario;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+public class ChamadoDto {
+    private Long id;
+
+    @NotBlank(message = "A descrição é obrigatória")
+    private String descricao;
+
+    private LocalDate data_inicio;
+
+    private LocalDate data_termino;
+
+    private TipoStatus status;
+
+    @NotBlank(message = "O setor é obrigatório")
+    private Setor setor;
+
+    private Usuario solicitante;
+
+    private Usuario responsavel;
+
+    private Prioridade prioridade;
+
+    public ChamadoDto() {
+
+    }
+
+    public ChamadoDto(Long id) {
+        this.id = id;
+    }
+
+    public ChamadoDto(String descricao, TipoStatus status, Setor setor, Usuario solicitante, Prioridade prioridade) {
+        this.descricao = descricao;
+        this.status = status;
+        this.setor = setor;
+        this.solicitante = solicitante;
+        this.prioridade = prioridade;
+    }
+
+    public ChamadoDto(String descricao, TipoStatus status, Setor setor, Prioridade prioridade, Usuario responsavel) {
+        this.descricao = descricao;
+        this.status = status;
+        this.setor = setor;
+        this.responsavel = responsavel;
+        this.prioridade = prioridade;
+    }
+
+    public ChamadoDto(Chamado chamado) {
+        this.id = chamado.getId();
+        this.descricao = chamado.getDescricao();
+        this.data_inicio = chamado.getData_inicio();
+        this.data_termino = chamado.getData_termino();
+        this.status = chamado.getStatus();
+        this.setor = chamado.getSetor();
+        this.solicitante = chamado.getSolicitante();
+        this.responsavel = chamado.getResponsavel();
+        this.prioridade = chamado.getPrioridade();
+    }
+
+    public ChamadoDto(Setor setor, String descricao) {
+        this.setor = setor;
+        this.descricao = descricao;
+    }
+
+    public static Chamado convert(ChamadoDto chamadoDto) {
+        Chamado chamado = new Chamado(chamadoDto.id);
+
+        chamado.setDescricao(chamadoDto.getDescricao());
+        chamado.setData_inicio(chamadoDto.getData_inicio());
+        chamado.setData_termino(chamadoDto.getData_termino());
+        chamado.setId(chamadoDto.getId());
+        chamado.setSetor(chamadoDto.getSetor());
+        chamado.setStatus(chamadoDto.getStatus());
+        chamado.setSolicitante(chamadoDto.getSolicitante());
+        chamado.setPrioridade(chamadoDto.getPrioridade());
+        chamado.setResponsavel(chamadoDto.getResponsavel());
+
+        return chamado;
+    }
+
+
+}
